@@ -28,7 +28,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
         if (tbUser != null) {
             List<TbPermission> tbPermissions = tbPermissionService.selectByUserId(tbUser.getId());
             tbPermissions.forEach(item -> {
-                GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(item.getEnname());
+                GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(item.getUrl());
                 grantedAuthorities.add(grantedAuthority);
             });
             return new User(tbUser.getUsername(), tbUser.getPassword(), grantedAuthorities);
