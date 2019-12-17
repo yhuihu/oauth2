@@ -14,7 +14,6 @@ import java.util.Collection;
  * @date 2019-12-17
  * @see com.demo.oauth2.config.auth
  **/
-@Order
 @Component("permission")
 public class PermissionCheck {
     private AntPathMatcher antPathMatcher = new AntPathMatcher();
