@@ -20,17 +20,18 @@ public class UserDetailServiceImpl implements UserDetailsService {
     private TbUserService tbUserService;
     @Autowired
     private TbPermissionService tbPermissionService;
+
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         TbUser tbUser = tbUserService.getByUsername(s);
-        List<GrantedAuthority> grantedAuthorities= Lists.newArrayList();
+        List<GrantedAuthority> grantedAuthorities = Lists.newArrayList();
         if (tbUser != null) {
             List<TbPermission> tbPermissions = tbPermissionService.selectByUserId(tbUser.getId());
             tbPermissions.forEach(item -> {
                 GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(item.getEnname());
                 grantedAuthorities.add(grantedAuthority);
             });
-            return new User(tbUser.getUsername(),tbUser.getPassword(),grantedAuthorities);
+            return new User(tbUser.getUsername(), tbUser.getPassword(), grantedAuthorities);
         }
         return null;
     }

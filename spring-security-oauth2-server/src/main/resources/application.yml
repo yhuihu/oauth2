@@ -3,7 +3,7 @@ spring:
     name: oauth2-server
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/oauth?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
+    url: jdbc:mysql://my.service.com:3306/oauth?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
     username: root
     password: 123456
 
@@ -12,3 +12,9 @@ server:
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.demo.oauth2.domain
+logging:
+  level:
+    com:
+      demo:
+        oauth2:
+          mapper: DEBUG
