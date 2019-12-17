@@ -32,6 +32,12 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
 //                .antMatchers("/**").hasAuthority("SystemContent");
     }
 
+
+    /**
+     * 以下为采坑地方，如果不使用自己的动态权限控制，下面无需配置也能运行
+     * 原因暂时不明，解决方案为参考以下issues地址
+     * https://github.com/spring-projects/spring-security-oauth/issues/730#issuecomment-219480394
+     */
     @Autowired
     private OAuth2WebSecurityExpressionHandler expressionHandler;
 
